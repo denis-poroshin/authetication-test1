@@ -1,6 +1,6 @@
 package ru.authenticationtest.springauthenticationtest.entity;
 
-import ru.authenticationtest.springauthenticationtest.enums.Role;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,19 +19,21 @@ public class EmployeeEntity {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "nick", unique = true)
+    private String nick;
+
     @Column(name = "first_name")
     private String firstName;
 
-//    @Column(name = "last_name")
-//    private String lastName;
+    @Column(name = "last_name")
+    private String lastName;
 
-//    @Column(name = "surname")
-//    private String surname;
+    @Column(name = "surname")
+    private String surname;
 
     @Column(name = "password")
     private String password;
-//    @OneToMany
-//    @Column(name = "roles")
-    @JoinColumn(name = "role")
+
+    @Column(name = "role")
     private String role;
 }

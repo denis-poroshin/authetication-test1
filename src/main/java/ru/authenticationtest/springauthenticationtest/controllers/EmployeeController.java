@@ -17,37 +17,37 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
 
-    @PostMapping("/create")
+    @PostMapping
     public EmployeeEntity createEmployee(@RequestBody EmployeeEntity employee) {
         return employeeService.createEmployee(employee);
     }
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void changeEmployee(@PathVariable long id, @RequestBody EmployeeEntity employee) {
         employeeService.changeEmployee(id, employee);
 
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public EmployeeEntity deleteEmployee(@PathVariable long id) {
-        return null;
+        return employeeService.deleteEmployee(id);
     }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public EmployeeEntity getEmployee(@PathVariable long id) {
-        return null;
+        return employeeService.getEmployee(id);
 
     }
     @GetMapping
     @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
     public Collection<EmployeeEntity> getAllEmployees() {
-        return null;
+        return employeeService.getAllEmployees();
     }
-//    @GetMapping
-//    public String getHello(){
-//        return "Hello World";
-//    }
+    @GetMapping("/welcome")
+    public String getHello(){
+        return "Hello!";
+    }
 
 
 }

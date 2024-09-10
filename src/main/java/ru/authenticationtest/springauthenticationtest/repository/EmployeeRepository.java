@@ -11,6 +11,6 @@ import java.util.Optional;
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long> {
 
-    @Query(value = "SELECT * FROM employees WHERE first_name = :first_name", nativeQuery = true)
-    Optional<EmployeeEntity> findByFirstName(@Param("first_name") String firstName);
+    Optional<EmployeeEntity> findByNick( String nick);
+
 }
